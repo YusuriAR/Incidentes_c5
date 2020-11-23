@@ -1,3 +1,4 @@
+
 import pandas as pd
 
 def get_repeated_values(df, col, top):
@@ -56,6 +57,29 @@ def category_profiling(df, col):
     profiling.update({'mode': df[col].mode().values,
                      'num_categories': df[col].nunique(),
                      'categories': df[col].unique(),
+                     'uniques': df[col].nunique(),
+                     'prop_missings': df[col].isna().sum()/df[col].size*100,
+                     'num_na': df[col].isna().sum(),
+                     'top1_repeated': get_repeated_values(df, col, 1),
+                     'top2_repeated': get_repeated_values(df, col, 2),
+                     'top3_repeated': get_repeated_values(df, col, 3)})
+    
+    return profiling
+
+def datetime_profiling(df, col):
+    """
+    Profiling for datetime columns. 
+    
+    :param: column to analyze
+    :return: dictionary
+    """
+    profiling = {}
+
+    profiling.update({'mode': df[col].mode().values,
+                     'num_categories': df[col].nunique(),
+                     'categories': df[col].unique(),
+                     'max': df[col].max(),
+                     'min': df[col].min(),
                      'uniques': df[col].nunique(),
                      'prop_missings': df[col].isna().sum()/df[col].size*100,
                      'num_na': df[col].isna().sum(),
