@@ -4,8 +4,8 @@ import os
 from src.utils import utils
 
 def ingest_file(path):
-    direction = os.path.join(path, "incidentes-viales-c5" + "." + "csv")
-    df = pd.read_csv(direction)
+    #direction = os.path.join(path, "incidentes-viales-c5" + "." + "csv")
+    df = pd.read_csv(path)
     return df
 
 def drop_cols(df):
@@ -27,7 +27,7 @@ def generate_label_incidente_color(df):
 
 def save_ingestion(df):
     os.chdir('../')
-    path = 'output\ingest_df.pkl'
+    path = 'output/ingest_df.pkl'
     utils.save_df(df, path)
 
 def ingest(path):
