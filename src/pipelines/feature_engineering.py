@@ -5,6 +5,11 @@ from src.utils import utils
 def load_transformation(path):
     return utils.load_df(path)
 
+def add_column(df):
+    df['año_creacion'] = df['fecha_creacion'].dt.year
+    return df
+
+
 def feature_generation(df):
     df.inputs = df.drop(['latitud', 'longitud', 'codigo_cierre','fecha_creacion','incidente_c4'], axis=1)
     return df.inputs
@@ -23,12 +28,10 @@ def save_fe(df):
 
 def fe(path):
     df = load_transformation(path)
+    df = add_column(df)
     df = feature_generation(df)
     df = feature_selection(df)
     save_fe(df)
-    
-    
-
 
 
 
