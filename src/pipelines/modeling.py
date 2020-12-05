@@ -29,8 +29,8 @@ def save_models(df):
     
 def magic_loop(algorithms, df):
     
-    y = df['y']
-    X = df.drop('y', axis=1)
+    y = df['label']
+    X = df.drop('label', axis=1)
     X_train, X_test, y_train, y_test = train_test_split(X, y)
     features = X_train
     labels = y_train
