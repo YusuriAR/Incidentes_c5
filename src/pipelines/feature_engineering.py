@@ -87,7 +87,7 @@ def save_fe_(df):
     path = 'output/test.pkl'
     utils.save_df(df, path)
 
-def fe(path):
+def feature_engineering(path):
     df = load_transformation(path)
     df = add_column(df)
     df = feature_generation(df)
