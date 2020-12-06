@@ -18,6 +18,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
 
 def load_features(path):
      return utils.load_df(path)
@@ -62,9 +63,16 @@ def magic_loop(algorithms, df):
         gs.fit(features, labels)
         #best estimator
         best_estimators.append(gs)
-        
-        
-    return best_estimators
+    
+    bag_clf=best_estimators[0].best_estimator_
+    bag_clf.fit(X_train, y_train)
+    y_pred = bag_clf.predict(X_test)
+    if accuracy_score(y_test, y_pred) > best_estimators[1].best_estimator_.oob_score_:
+        best_2 = best_estimators[0]
+    else:
+        best_2 = best_estimators[1]
+    
+    return best_2
 
 def modeling(path):
     df = load_features(path)
