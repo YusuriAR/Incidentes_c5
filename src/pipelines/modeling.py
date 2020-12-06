@@ -42,12 +42,18 @@ def magic_loop(algorithms, df):
     algorithms_dict = {'tree': 'tree_grid_search',
                   'random_forest': 'rf_grid_search'}
     
-    grid_search_dict = {'tree_grid_search': {'max_depth': [1,2,5,None], 
-                                         'min_samples_leaf': [2,4]},
-                   'rf_grid_search': {'n_estimators': [10,20],  
-                                      'max_depth': [1,2,5,None], 
-                                      'min_samples_leaf': [2,4]}}
+#    grid_search_dict = {'tree_grid_search': {'max_depth': [1,2,5,None], 
+#                                         'min_samples_leaf': [2,4]},
+#                   'rf_grid_search': {'n_estimators': [10,20],  
+#                                      'max_depth': [1,2,5,None], 
+#                                     'min_samples_leaf': [2,4]}}
     
+    grid_search_dict = {'tree_grid_search': {'max_depth': [1,5,10,None], 
+                                         'min_samples_leaf': [2,5]},
+                   'rf_grid_search': {'n_estimators': [10,100],  
+                                      'max_depth': [1,2,10,None], 
+                                      'min_samples_leaf': [2,10]}}
+
     best_estimators = []
     for algorithm in algorithms:
         estimator = estimators_dict[algorithm]
@@ -63,16 +69,8 @@ def magic_loop(algorithms, df):
         gs.fit(features, labels)
         #best estimator
         best_estimators.append(gs)
-    
-    bag_clf=best_estimators[0].best_estimator_
-    bag_clf.fit(X_train, y_train)
-    y_pred = bag_clf.predict(X_test)
-    if accuracy_score(y_test, y_pred) > best_estimators[1].best_estimator_.oob_score_:
-        best_2 = best_estimators[0]
-    else:
-        best_2 = best_estimators[1]
-    
-    return best_2
+
+    return best_estimators
 
 def modeling(path):
     df = load_features(path)
