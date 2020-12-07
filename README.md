@@ -19,8 +19,11 @@ Los requerimientos para correr el proyecto se encuentran en el archivo `requirem
 Qué infraestructura se necesita para poder correr su código? (características de la máquina):
 
 Sistema operativo: Ubuntu 20.04.1 LTS
+
 Procesador: Intel® Core™ i7-1065G7 CPU @ 1.30GHz × 8 
+
 64-bits
+
 RAM: 12gb
 
 
@@ -51,15 +54,18 @@ En nuestro caso, lo que buscamos es tener un nivel de eficiencia alto ya que con
 ## Sesgo y Equidad
 
 Dado que nuestro modelo está relacionado con una acción referente a un castigo consideramos las siguientes metricas:
-  *PPR Predicted Positive Rate: Nos interesa para saber cuántas predijimos como falsas y realmente lo eran.
-  *FPR False Positive Rate: Nos interesa para saber las que nos dice son falsas cuando realmente son verdaderas nos interesa para mandar la ambulancia a quién la necesita.
-  *FDR False Discovery Rate: Nos interesa para saber fracción de personas que realmente necesitan la ambulancia y fueron predichos como falsos.
+
+  - PPR Predicted Positive Rate: Nos interesa para saber cuántas predijimos como falsas y realmente lo eran.
+  
+  - FPR False Positive Rate: Nos interesa para saber las que nos dice son falsas cuando realmente son verdaderas nos interesa para mandar la ambulancia a quién la necesita.
+  
+  - FDR False Discovery Rate: Nos interesa para saber fracción de personas que realmente necesitan la ambulancia y fueron predichos como falsos.
  
-Sesgo
+### Sesgo
 
 En PPR Predicted Positive Rate podemos ver que nuestro modelo le está diciendo 1.5 veces más a la delegación Iztapalapa que las llamadas que se reciben son falsas.
 
 
-Equidad
+### Equidad
 
 En PPR (Predicted Positive Rate): Tenemos que es injusto en la mayoría de las delegaciones si tomamos como referencia a la delegación Gustavo A. Madero, las únicas dos que no tienen son Miguel Hidalgo y Cuauhtémoc. Esto nos indica que las ambulancias que se envían en éstas delegaciones realmente lo necesitaban.
