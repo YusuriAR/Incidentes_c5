@@ -12,6 +12,7 @@ from src import proyecto_1
 from src.utils import utils
 import pandas as pd
 import numpy as np
+import random
 
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
@@ -19,6 +20,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+
+random.seed(123)
 
 def load_features(path):
      return utils.load_df(path)
@@ -32,7 +35,7 @@ def magic_loop(algorithms, df):
     
     y = df['label']
     X = df.drop('label', axis=1)
-    X_train, X_test, y_train, y_test = train_test_split(X, y)
+    X_train, X_test, y_train, y_test = train_test_split(X, y,random_state=123,test_size=0.2,shuffle=True)
     features = X_train
     labels = y_train
     
