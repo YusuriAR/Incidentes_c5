@@ -53,6 +53,8 @@ En nuestro caso, lo que buscamos es tener un nivel de eficiencia alto ya que con
 
 ## Sesgo y Equidad
 
+Vamos a tomar la Delegación Gustavo A. Madero como nuestro grupo de referencia, pues la mediana de los fpr es la que más se acerca a esta delegación y así podremos ver si hay algún sesgo entre las otras delegaciones.
+
 Dado que nuestro modelo está relacionado con una acción referente a un castigo consideramos las siguientes metricas:
 
   - PPR Predicted Positive Rate: Nos interesa para saber cuántas predijimos como falsas y realmente lo eran.
