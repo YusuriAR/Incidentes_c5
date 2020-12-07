@@ -1,6 +1,6 @@
 # Datos de accidentes viales en la CDMX
 
-Analisis de accidentes viales en la CDMX reportados por el Centro de Comando, Control, Cómputo, Comunicaciones y Contacto Ciudadano de la CDMX (C5) desde 2014 y actualizdos mensualmente.
+Análisis de accidentes viales en la CDMX reportados por el Centro de Comando, Control, Cómputo, Comunicaciones y Contacto Ciudadano de la CDMX (C5) desde 2014 y actualizdos mensualmente.
 
 Los datos se encuentras disponibles [en el portal de Datos Abiertos Ciudad de México](https://datos.cdmx.gob.mx/explore/dataset/incidentes-viales-c5/information/?disjunctive.incidente_c4).
 
@@ -9,20 +9,27 @@ El equipo de Ciencia de Datos que ejecutó el proyecto son:
 - Diego Villegas (197902)
 - Yedam Fortiz (119523)
 
-Los requerimientos para correr el proyecto se encuentran en el archivo `requirements.txt`.
-Para replicar los resultados del analisis, es necesrio crear la carpeta `Data` y depositar el archivo `incidentes-viales-c5.csv`.
-
-# x
+En este repositorio se encuentra el análisis para la clasificación de llamadas que pueden ser falsas recibidas en el C5. El achivo principal donde recopilamos los resultados es el jupyter notebook Proyecto2 en el cual se nutre con distintas funciones de modelado en python en las diversas carpetas asociadas a este repositorio.
 
 Qué infraestructura es necesaria para correr su código:
 
-# x
+Los requerimientos para correr el proyecto se encuentran en el archivo `requirements.txt`.
+
 
 Qué infraestructura se necesita para poder correr su código? (características de la máquina):
 
-# x
+Sistema operativo: Ubuntu 20.04.1 LTS
+Procesador: Intel® Core™ i7-1065G7 CPU @ 1.30GHz × 8 
+64-bits
+RAM: 12gb
+
 
 Cómo correr su código:
+
+Para replicar los resultados del análisis, es necesario crear la carpeta `Data` y depositar el archivo `incidentes-viales-c5.csv`.
+Se abre el notebook de Proyecto2 que se encuentra en la carpeta de notebooks y se corren las celdas para obtener los resultados del modelo.
+En el proyecto_1.py se pueden cargar todos los pickles.
+
 
 ## Evaluación de modelo
 
@@ -48,10 +55,11 @@ Dado que nuestro modelo está relacionado con una acción referente a un castigo
   *FPR False Positive Rate: Nos interesa para saber las que nos dice son falsas cuando realmente son verdaderas nos interesa para mandar la ambulancia a quién la necesita.
   *FDR False Discovery Rate: Nos interesa para saber fracción de personas que realmente necesitan la ambulancia y fueron predichos como falsos.
  
-# x
-
 Sesgo
 
-# x
+En PPR Predicted Positive Rate podemos ver que nuestro modelo le está diciendo 1.5 veces más a la delegación Iztapalapa que las llamadas que se reciben son falsas.
+
 
 Equidad
+
+En PPR (Predicted Positive Rate): Tenemos que es injusto en la mayoría de las delegaciones si tomamos como referencia a la delegación Gustavo A. Madero, las únicas dos que no tienen son Miguel Hidalgo y Cuauhtémoc. Esto nos indica que las ambulancias que se envían en éstas delegaciones realmente lo necesitaban.
