@@ -49,7 +49,7 @@ def metrics(model):
     X_test_ = X_test[selection_test]
     # = model.predict(X_test_)
     #proba = model.predict_proba(X_test_)
-    prediction = (model[1].best_estimator_.predict_proba(X_test_)[:,1] >= 0.210202).astype(bool)
+    prediction = (model[1].best_estimator_.predict_proba(X_test_)[:,1] >= 0.210635).astype(bool)
     proba = model[1].best_estimator_.predict_proba(X_test_)
     
     #%matplotlib inline
